@@ -8,11 +8,10 @@
 <body>
 <h1>Tourist Attractions</h1>
 <ul>
-    <!-- Here you might iterate through your attractions and display them -->
     <li th:each="attraction : ${tourist}">
-        <span th:text="${attraction.name}"></span> - <span th:text="${attraction.location}"></span>
+        <span th:text="${attraction.name}"></span> - <span th:text="${attraction.description}"></span>
     </li>
 </ul>
-<a href="/add">Add New Attraction</a>
+<a href="http://localhost:8080/attractions/add">Add New Attraction</a>
 </body>
 </html>

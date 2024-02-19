@@ -6,20 +6,13 @@
     <title>Title</title>
 </head>
 <body>
-<table>
-    <thead>
-    <tr>
-        <th>Tourist Attractions</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="attraction : ${tourist}">
-        <td>
-            <strong th:text="${attraction.name}"></strong>
-            <a th:text="${attraction.description}"></a>
-        </td>
-    </tr>
-    </tbody>
-</table>
+<h1>Tourist Attractions</h1>
+<ul>
+    <!-- Here you might iterate through your attractions and display them -->
+    <li th:each="attraction : ${tourist}">
+        <span th:text="${attraction.name}"></span> - <span th:text="${attraction.location}"></span>
+    </li>
+</ul>
+<a href="/add">Add New Attraction</a>
 </body>
 </html>

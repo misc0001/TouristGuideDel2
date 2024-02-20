@@ -37,14 +37,12 @@ public class TouristRepository {
     }
 
     public void updateAttraction(TouristAttraction updatedAttraction) {
-        int index = 0;
-        for (TouristAttraction touristAttraction : touristAttractions) {
-            if (touristAttraction.getId() == updatedAttraction.getId()) {
-                index = 1;
+        for (int i = 0; i < touristAttractions.size(); i++) {
+            if (touristAttractions.get(i).getId() == updatedAttraction.getId()) {
+                touristAttractions.set(i, updatedAttraction);
                 break;
             }
         }
-        touristAttractions.set(index, updatedAttraction);
     }
 
     public void deleteAttraction(int id) {

@@ -4,15 +4,13 @@ import com.example.touristguidedel2.model.TouristAttraction;
 import com.example.touristguidedel2.service.TouristService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("attractions")
 public class TouristController {
 
-    TouristService touristService;
+    private final TouristService touristService;
     public TouristController(TouristService touristService) {
         this.touristService = touristService;
     }
@@ -23,15 +21,21 @@ public class TouristController {
         return "attraction-index";
     }
 
-    @GetMapping("attractions/{name}/edit")
-    public String editAttractions(@PathVariable String name, Model model) {
+    @GetMapping("/edit/name")
+    public String editAttractions(@RequestParam String name, Model model) {
         TouristAttraction attraction = touristService.findByName(name);
         if (attraction != null) {
             model.addAttribute("attraction", attraction);
-            return "attraction-edit"; // Name of the view for editing attractions
+            return "attraction-edit";
         } else {
             return "attraction-not-found";
-
         }
     }
+    @PostMapping("/update/name")
+    public String updateAttraction(@ModelAttribute TouristAttraction attraction, Model model) {
+        touristService.editAttraction(attraction.getName(), attraction);
+        model.addAttribute("attraction", attraction);
+        return "attraction-edit";
     }
+
+}

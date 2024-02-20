@@ -7,6 +7,10 @@ public class TouristAttraction {
     private String name;
     private String description;
 
+    public TouristAttraction() {
+
+    }
+
     public TouristAttraction(int id, String name, String description) {
         this.id = id;
         this.name = name;

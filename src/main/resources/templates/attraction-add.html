@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new attraction</title>
+</head>
+<body>
+<h1>Add New Attraction</h1>
+<form action="http://localhost:8080/attractions/add" method="post">
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" name="name"><br>
+    <label for="description">Description:</label><br>
+    <input type="text" id="description" name="description"><br>
+    <input type="submit" value="Submit">
+</form>
+</body>
+</html>

@@ -41,15 +41,18 @@ public class TouristRepository {
         }
         touristAttractions.set(index, updatedAttraction);
     }
-    public void deleteAttraction(int id) {
+    public TouristAttraction deleteAttraction(int id) {
         TouristAttraction removeAttraction = null;
         for (TouristAttraction touristAttraction : touristAttractions) {
-            if (touristAttraction.getId() == id)
+            if (touristAttraction.getId() == id) {
                 removeAttraction = touristAttraction;
-
+                break;
             }
-            if (removeAttraction != null)
-                touristAttractions.remove(removeAttraction);
+        }
+        if (removeAttraction != null) {
+            touristAttractions.remove(removeAttraction);
+        }
+            return removeAttraction;
         }
     }
 

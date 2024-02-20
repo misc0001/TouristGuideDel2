@@ -22,7 +22,12 @@ public class TouristService {
     public void updateAttraction(TouristAttraction updatedAttraction) {
         touristRepository.updateAttraction(updatedAttraction);
     }
-    public void deleteAttraction(int id) {
-        touristRepository.deleteAttraction(id);
+    public TouristAttraction deleteAttraction(int id) {
+        TouristAttraction deletedTouristAttraction = touristRepository.deleteAttraction(id);
+        if (deletedTouristAttraction != null) {
+            return deletedTouristAttraction;
+        } else {
+            return new TouristAttraction(99, "ikke fundet", "ikke fundet");
+        }
     }
 }

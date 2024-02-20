@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Attraction</title>
+</head>
+<body>
+<h2>Ændring af informationer</h2>
+<form action="/path-to-your-update-endpoint" method="post">
+    <div>
+        <label for="name">Navn:</label>
+        <input type="text" id="name" name="name" value="{name}" readonly>
+    </div>
+    <div>
+        <label for="description">Beskrivelse:</label>
+        <input type="text" id="description" name="description" value="">
+    </div>
+    <div>
+        <label for="city">By:</label>
+        <select id="city" name="city">
+            <option value="kobenhavn" selected>København</option>
+            <!-- Add other cities as needed -->
+        </select>
+    </div>
+    <div>
+        <label>Tags:</label>
+        <label><input type="checkbox" name="tags" value="børnevenlig"> Børnevenlig</label>
+        <label><input type="checkbox" name="tags" value="gratis"> Gratis</label>
+        <label><input type="checkbox" name="tags" value="kunst" > Kunst</label>
+        <label><input type="checkbox" name="tags" value="museum" > Museum</label>
+        <label><input type="checkbox" name="tags" value="natur"> Natur</label>
+    </div>
+    <div>
+        <input type="submit" value="Ok">
+        <button type="button" onclick="window.history.back();">Fortryd</button>
+    </div>
+</form>
+</body>
+</html>

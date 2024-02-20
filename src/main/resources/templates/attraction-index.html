@@ -10,6 +10,7 @@
 <ul>
     <li th:each="attraction : ${tourist}">
         <span th:text="${attraction.name}"></span> - <span th:text="${attraction.description}"></span>
+        <a th:href="@{/attractions/{id}/tags(id=${attraction.id})}">Tags</a>
     </li>
 </ul>
 <a href="http://localhost:8080/attractions/add">Add New Attraction</a>

@@ -1,20 +1,22 @@
 package com.example.touristguidedel2.model;
 
+import java.util.List;
 import java.util.Objects;
 
 public class TouristAttraction {
     private int id;
     private String name;
     private String description;
-
+    private List<String> tags;
     public TouristAttraction() {
 
     }
 
-    public TouristAttraction(int id, String name, String description) {
+    public TouristAttraction(int id, String name, String description, List<String> tags) {
         this.id = id;
         this.name = name;
         this.description = description;
+        this.tags = tags;
     }
 
     public int getId() {
@@ -39,6 +41,14 @@ public class TouristAttraction {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<String> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<String> tags) {
+        this.tags = tags;
     }
 
     @Override

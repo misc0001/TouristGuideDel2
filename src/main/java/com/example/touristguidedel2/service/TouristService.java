@@ -4,6 +4,7 @@ import com.example.touristguidedel2.model.TouristAttraction;
 import com.example.touristguidedel2.repository.TouristRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -27,7 +28,10 @@ public class TouristService {
         if (deletedTouristAttraction != null) {
             return deletedTouristAttraction;
         } else {
-            return new TouristAttraction(99, "ikke fundet", "ikke fundet");
+            return new TouristAttraction(99, "ikke fundet", "ikke fundet", List.of());
         }
+    }
+    public TouristAttraction findAttractionById(int id) {
+        return touristRepository.findAttractionById(id);
     }
 }

@@ -14,11 +14,11 @@ public class TouristRepository {
 
     public TouristRepository() {
         touristAttractId = 1;
-        touristAttractions = new ArrayList<TouristAttraction>(List.of(
-                new TouristAttraction(getTouristAttractId(), "Amalienborg Slot", "Slot"),
-                new TouristAttraction(getTouristAttractId(),"Tivoli", "Forlystelsespark"),
-                new TouristAttraction(getTouristAttractId(), "Fredensborg Slot", "Slot"),
-                new TouristAttraction(getTouristAttractId(), "København Zoo", "Zoo")
+        touristAttractions = new ArrayList<>(List.of(
+                new TouristAttraction(getTouristAttractId(), "Amalienborg Slot", "Slot", List.of("amalienTags", "tags2")),
+                new TouristAttraction(getTouristAttractId(),"Tivoli", "Forlystelsespark", List.of("tivoliTags", "tags2")),
+                new TouristAttraction(getTouristAttractId(), "Fredensborg Slot", "Slot",List.of("fredenbordTags", "tags2")),
+                new TouristAttraction(getTouristAttractId(), "København Zoo", "Zoo",List.of("zooTags", "tags2"))
         ));
 
     }
@@ -35,9 +35,11 @@ public class TouristRepository {
     }
     public void updateAttraction(TouristAttraction updatedAttraction) {
         int index = 0;
-        for (int i = 0; i<touristAttractions.size(); i++) {
-            if (touristAttractions.get(i).getId() == updatedAttraction.getId())
+        for (TouristAttraction touristAttraction : touristAttractions) {
+            if (touristAttraction.getId() == updatedAttraction.getId()) {
                 index = 1;
+                break;
+            }
         }
         touristAttractions.set(index, updatedAttraction);
     }
@@ -54,6 +56,21 @@ public class TouristRepository {
         }
             return removeAttraction;
         }
+
+    public TouristAttraction findAttractionById(int id) {
+        TouristAttraction attractionFind = null;
+        for (TouristAttraction attraction : touristAttractions) {
+            if (attraction.getId() == id)
+                attractionFind = attraction;
+
+
+        }
+        if (attractionFind != null)
+            return attractionFind;
+        else
+            return null;
     }
+
+}
 
 

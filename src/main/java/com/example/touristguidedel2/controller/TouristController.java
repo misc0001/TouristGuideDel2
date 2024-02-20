@@ -37,7 +37,7 @@ public class TouristController {
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-      
+    }
     @GetMapping("add")
     public String showAddedAttraction(Model model) {
         TouristAttraction newAttraction = new TouristAttraction();
@@ -48,5 +48,16 @@ public class TouristController {
     public String addAttraction(@ModelAttribute TouristAttraction touristAttraction) {
         touristService.addAttraction(touristAttraction);
         return "redirect:/attractions";
+    }
+
+    @GetMapping("/{id}/tags")
+    public String showAttractionTags(@PathVariable int id, Model model) {
+        TouristAttraction attraction = touristService.findAttractionById(id);
+        if (attraction != null) {
+            model.addAttribute("attraction", attraction);
+            return "attraction-tags";
+        } else {
+            return "redirect:/attractions";
+        }
     }
 }

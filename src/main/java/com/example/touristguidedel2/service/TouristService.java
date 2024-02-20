@@ -25,4 +25,7 @@ public class TouristService {
     public void deleteAttraction(int id) {
         touristRepository.deleteAttraction(id);
     }
+    public TouristAttraction findByName(String name) {
+       return touristRepository.findByName(name);
+    }
 }

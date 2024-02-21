@@ -31,7 +31,7 @@ public class TouristRepository {
         return touristAttractions;
     }
     public List<String> getCities() {
-        return Arrays.asList("Københan", "Odense", "Aarhus");
+        return Arrays.asList("København", "Odense", "Aarhus");
     }
     public List<String> getTags() {
         return Arrays.asList("Børnevenlig", "Gratis", "Kunst", "Museum", "Natur");

@@ -18,8 +18,8 @@
     </select><br>
     <label>Tags:</label><br>
     <div th:each="tag : ${tags}">
-        <input type="checkbox" th:id="${'tag_' + tag}" th:name="'tags'" th:value="${tag}"/>
-        <label th:for="${'tag_' + tag}" th:text="${tag}"></label><br>
+        <input type="checkbox" th:id="${tag}" th:name="'tags'" th:value="${tag}"/>
+        <label th:for="${tag}" th:text="${tag}"></label><br>
     </div>
     <input type="submit" value="Submit">
 </form>

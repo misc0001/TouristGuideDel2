@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 
 @Controller
 @RequestMapping("attractions")
@@ -41,7 +43,11 @@ public class TouristController {
     @GetMapping("add")
     public String showAddedAttraction(Model model) {
         TouristAttraction newAttraction = new TouristAttraction();
+        List<String> cities = touristService.getCities();
+        List<String> tags = touristService.getTags();
         model.addAttribute("attraction", newAttraction);
+        model.addAttribute("cities", cities);
+        model.addAttribute("tags", tags);
         return "attraction-add";
     }
     @PostMapping("add")

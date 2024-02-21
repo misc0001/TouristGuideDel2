@@ -12,7 +12,19 @@
     <input type="text" id="name" name="name"><br>
     <label for="description">Description:</label><br>
     <input type="text" id="description" name="description"><br>
+    <label for="city">City:</label><br>
+    <select id="city" name="city">
+        <option th:each="city : ${cities}" th:value="${city}" th:text="${city}"></option>
+    </select><br>
+    <label>Tags:</label><br>
+    <div th:each="tag : ${tags}">
+        <input type="checkbox" th:id="${'tag_' + tag}" th:name="'tags'" th:value="${tag}"/>
+        <label th:for="${'tag_' + tag}" th:text="${tag}"></label><br>
+    </div>
     <input type="submit" value="Submit">
+</form>
+<form action="http://localhost:8080/attractions">
+    <input type="submit" value="Tilbage">
 </form>
 </body>
 </html>

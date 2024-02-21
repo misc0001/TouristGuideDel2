@@ -4,6 +4,7 @@ import com.example.touristguidedel2.model.TouristAttraction;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Repository
@@ -15,10 +16,10 @@ public class TouristRepository {
     public TouristRepository() {
         touristAttractId = 1;
         touristAttractions = new ArrayList<>(List.of(
-                new TouristAttraction(getTouristAttractId(), "Amalienborg Slot", "Slot", List.of("amalienTags", "tags2")),
-                new TouristAttraction(getTouristAttractId(),"Tivoli", "Forlystelsespark", List.of("tivoliTags", "tags2")),
-                new TouristAttraction(getTouristAttractId(), "Fredensborg Slot", "Slot",List.of("fredenbordTags", "tags2")),
-                new TouristAttraction(getTouristAttractId(), "København Zoo", "Zoo",List.of("zooTags", "tags2"))
+                new TouristAttraction(getTouristAttractId(), "Amalienborg Slot", "Slot", "København", List.of("amalienTags", "tags2")),
+                new TouristAttraction(getTouristAttractId(),"Tivoli", "Forlystelsespark", "København", List.of("tivoliTags", "tags2")),
+                new TouristAttraction(getTouristAttractId(), "Fredensborg Slot", "Slot", "København", List.of("fredenbordTags", "tags2")),
+                new TouristAttraction(getTouristAttractId(), "København Zoo", "Zoo", "København", List.of("zooTags", "tags2"))
         ));
 
     }
@@ -28,6 +29,12 @@ public class TouristRepository {
 
     public List<TouristAttraction> getAllAttractions() {
         return touristAttractions;
+    }
+    public List<String> getCities() {
+        return Arrays.asList("Københan", "Odense", "Aarhus");
+    }
+    public List<String> getTags() {
+        return Arrays.asList("Børnevenlig", "Gratis", "Kunst", "Museum", "Natur");
     }
     public void addAttraction(TouristAttraction touristAttraction) {
         touristAttraction.setId(getTouristAttractId());

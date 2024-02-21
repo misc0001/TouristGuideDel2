@@ -7,15 +7,17 @@ public class TouristAttraction {
     private int id;
     private String name;
     private String description;
+    private String city;
     private List<String> tags;
     public TouristAttraction() {
 
     }
 
-    public TouristAttraction(int id, String name, String description, List<String> tags) {
+    public TouristAttraction(int id, String name, String description, String city, List<String> tags) {
         this.id = id;
         this.name = name;
         this.description = description;
+        this.city = city;
         this.tags = tags;
     }
 
@@ -41,6 +43,14 @@ public class TouristAttraction {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public List<String> getTags() {

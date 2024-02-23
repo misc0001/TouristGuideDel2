@@ -40,37 +40,24 @@ public class TouristRepository {
         touristAttraction.setId(getTouristAttractId());
         touristAttractions.add(touristAttraction);
     }
-    public void updateAttraction(TouristAttraction updatedAttraction) {
-        int index = 0;
-        for (TouristAttraction touristAttraction : touristAttractions) {
-            if (touristAttraction.getId() == updatedAttraction.getId()) {
-                index = 1;
-                break;
-            }
-        }
-        touristAttractions.set(index, updatedAttraction);
-    }
-    public TouristAttraction deleteAttraction(int id) {
+
+    public void deleteAttraction(int id) {
         TouristAttraction removeAttraction = null;
-        for (TouristAttraction touristAttraction : touristAttractions) {
-            if (touristAttraction.getId() == id) {
-                removeAttraction = touristAttraction;
-                break;
-            }
+        for (TouristAttraction attraction : touristAttractions) {
+            if (attraction.getId() == id)
+                removeAttraction = attraction;
         }
-        if (removeAttraction != null) {
+        if (removeAttraction != null)
             touristAttractions.remove(removeAttraction);
-        }
-            return removeAttraction;
-        }
+    }
+
 
     public TouristAttraction findAttractionById(int id) {
         TouristAttraction attractionFind = null;
         for (TouristAttraction attraction : touristAttractions) {
-            if (attraction.getId() == id)
+            if (attraction.getId() == id) {
                 attractionFind = attraction;
-
-
+            }
         }
         if (attractionFind != null)
             return attractionFind;

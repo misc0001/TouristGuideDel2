@@ -30,16 +30,14 @@ public class TouristController {
         return "attraction-index";
     }
 
-    @DeleteMapping("{id}/delete")
-    public ResponseEntity<TouristAttraction> deleteAttraction(@PathVariable int id) {
-        TouristAttraction deleteAttraction = touristService.deleteAttraction(id);
 
-        if (deleteAttraction != null) {
-            return new ResponseEntity<>(deleteAttraction, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+    @GetMapping("{id}/delete")
+    public String deleteAttraction(@PathVariable int id) {
+        touristService.deleteAttraction(id);
+        return "redirect:/attractions";
     }
+
+
     @GetMapping("add")
     public String showAddedAttraction(Model model) {
         TouristAttraction newAttraction = new TouristAttraction();

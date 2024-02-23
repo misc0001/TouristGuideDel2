@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+
 import java.util.List;
 
 
@@ -19,7 +20,7 @@ import java.util.List;
 @RequestMapping("attractions")
 public class TouristController {
 
-    TouristService touristService;
+    private final TouristService touristService;
     public TouristController(TouristService touristService) {
         this.touristService = touristService;
     }
@@ -29,6 +30,25 @@ public class TouristController {
         model.addAttribute("tourist", touristService.getAllAttractions());
         return "attraction-index";
     }
+
+
+    @GetMapping("/edit/name")
+    public String editAttractions(@RequestParam String name, Model model) {
+        TouristAttraction attraction = touristService.findByName(name);
+        if (attraction != null) {
+            model.addAttribute("attraction", attraction);
+            return "attraction-edit";
+        } else {
+            return "attraction-not-found";
+        }
+    }
+    @PostMapping("/update/name")
+    public String updateAttraction(@ModelAttribute TouristAttraction attraction, Model model) {
+        touristService.editAttraction(attraction.getName(), attraction);
+        model.addAttribute("attraction", attraction);
+        return "attraction-edit";
+    }
+
 
 
     @GetMapping("{id}/delete")

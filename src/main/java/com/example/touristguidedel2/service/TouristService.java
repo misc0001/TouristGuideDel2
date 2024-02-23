@@ -25,6 +25,18 @@ public class TouristService {
     public void addAttraction(TouristAttraction touristAttraction) {
         touristRepository.addAttraction(touristAttraction);
     }
+
+    public void editAttraction(String name, TouristAttraction updatedAttraction) {
+        touristRepository.editAttraction(name, updatedAttraction);
+    }
+    public void updateAttraction(TouristAttraction touristAttraction){
+        touristRepository.updateAttraction(touristAttraction);
+    }
+
+    public TouristAttraction findByName(String name) {
+       return touristRepository.findByName(name);
+    }
+
     public void deleteAttraction(int id) {
         touristRepository.deleteAttraction(id);
     }

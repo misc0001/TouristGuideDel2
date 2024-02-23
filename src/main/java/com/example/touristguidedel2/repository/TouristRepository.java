@@ -23,6 +23,7 @@ public class TouristRepository {
         ));
 
     }
+
     private int getTouristAttractId() {
         return touristAttractId++;
     }
@@ -30,16 +31,28 @@ public class TouristRepository {
     public List<TouristAttraction> getAllAttractions() {
         return touristAttractions;
     }
+
     public List<String> getCities() {
         return Arrays.asList("København", "Odense", "Aarhus");
     }
     public List<String> getTags() {
         return Arrays.asList("Børnevenlig", "Gratis", "Kunst", "Museum", "Natur");
     }
+
     public void addAttraction(TouristAttraction touristAttraction) {
         touristAttraction.setId(getTouristAttractId());
         touristAttractions.add(touristAttraction);
     }
+
+    public void updateAttraction(TouristAttraction updatedAttraction) {
+        for (int i = 0; i < touristAttractions.size(); i++) {
+            if (touristAttractions.get(i).getId() == updatedAttraction.getId()) {
+                touristAttractions.set(i, updatedAttraction);
+                break;
+            }
+        }
+    }
+
 
     public void deleteAttraction(int id) {
         TouristAttraction removeAttraction = null;
@@ -49,6 +62,28 @@ public class TouristRepository {
         }
         if (removeAttraction != null)
             touristAttractions.remove(removeAttraction);
+    }
+
+
+  
+
+    public TouristAttraction editAttraction(String name, TouristAttraction editAttraction) {
+        for (TouristAttraction touristAttraction : touristAttractions) {
+            if (touristAttraction.getName().equals(name)) {
+                touristAttraction.setDescription(editAttraction.getDescription());
+                return touristAttraction;
+            }
+        }
+        return null;
+    }
+
+    public TouristAttraction findByName(String name) {
+        for (TouristAttraction attraction : touristAttractions) {
+            if (attraction.getName().equals(name)) {
+                return attraction;
+            }
+        }
+        return null;
     }
 
 
@@ -64,7 +99,6 @@ public class TouristRepository {
         else
             return null;
     }
-
 }
 
 

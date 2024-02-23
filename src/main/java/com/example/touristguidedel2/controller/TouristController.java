@@ -4,6 +4,7 @@ import com.example.touristguidedel2.model.TouristAttraction;
 import com.example.touristguidedel2.service.TouristService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -33,9 +34,10 @@ public class TouristController {
     }
     @PostMapping("/update/name")
     public String updateAttraction(@ModelAttribute TouristAttraction attraction, Model model) {
-        touristService.editAttraction(attraction.getName(), attraction);
+        touristService.updateAttraction(attraction);
         model.addAttribute("attraction", attraction);
-        return "attraction-edit";
+        return "redirect:/attractions";
     }
+
 
 }

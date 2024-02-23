@@ -7,17 +7,16 @@
 <body>
 <h2>Edit Tourist Attraction</h2>
 <form th:action="@{/attractions/update/name}" th:object="${attraction}" method="post">
-    <input type="hidden" name="name" th:field="*{attraction.name}" />
     <div>
         <label for="id">ID:</label>
-        <input type="text" id="id" th:field="*{attraction.id}" required>
+        <input type="text" id="id" th:field="*{id}" readonly>
     </div>
     <div>
         <label for="description">Description:</label>
-        <textarea id="description" th:field="*{attraction.description}" required></textarea>
+        <textarea id="description" th:field="*{description}" required></textarea>
     </div>
     <div>
-        <input type="submit" value="Update" >
+        <input type="submit" value="Update">
     </div>
 </form>
 <a href="/attractions">Back to list</a>

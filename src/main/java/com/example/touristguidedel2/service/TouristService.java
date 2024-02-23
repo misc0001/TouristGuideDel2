@@ -2,6 +2,7 @@ package com.example.touristguidedel2.service;
 
 import com.example.touristguidedel2.model.TouristAttraction;
 import com.example.touristguidedel2.repository.TouristRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,8 +11,9 @@ import java.util.List;
 public class TouristService {
     private TouristRepository touristRepository;
 
-    public TouristService() {
-        touristRepository = new TouristRepository();
+    @Autowired
+    public TouristService(TouristRepository touristRepository) {
+        this.touristRepository = touristRepository;
     }
     public List<TouristAttraction> getAllAttractions() {
         return touristRepository.getAllAttractions();

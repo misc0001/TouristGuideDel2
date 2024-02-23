@@ -50,7 +50,6 @@ public class TouristController {
     }
 
 
-
     @GetMapping("{id}/delete")
     public String deleteAttraction(@PathVariable int id) {
         touristService.deleteAttraction(id);

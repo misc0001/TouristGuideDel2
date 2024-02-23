@@ -4,24 +4,40 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" th:href="@{/main.css}">
 </head>
 <body>
 <h1>Tourist Attractions</h1>
-<ul>
-    <li th:each="attraction : ${tourist}">
-        <div style="display: inline-block;">
-        <span th:text="${attraction.name}"></span> - <span th:text="${attraction.description}"></span> - <span th:text="${attraction.city}"></span>
-        </div>
-        <form style="display: inline-block;" th:action="@{/attractions/{id}/tags(id=${attraction.id})}" method="get">
+<table>
+    <thead>
+    <tr>
+        <th>Attraktion</th>
+        <th>Type</th>
+        <th>By</th>
+        <th> </th>
+        <th> </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="attraction : ${tourist}">
+        <td th:text="${attraction.name}"/>
+        <td th:text="${attraction.description}"/>
+        <td th:text="${attraction.city}"/>
+        <td><form style="display: inline-block;" th:action="@{/attractions/{id}/tags(id=${attraction.id})}" method="get">
             <input type="hidden" name="id" th:value="${attraction.id}" />
             <input type="submit" value="Tags">
         </form>
-        <form style="display: inline-block;" th:action="@{/attractions/{id}/delete(id=${attraction.id})}" method="get">
-            <input type="hidden" name="id" th:value="${attraction.id}" />
-            <button type="submit">Delete</button>
-        </form>
-    </li>
-</ul>
+        <td/>
+        <td>
+            <form style="display: inline-block;" th:action="@{/attractions/{id}/delete(id=${attraction.id})}" method="get">
+                <input type="hidden" name="id" th:value="${attraction.id}" />
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
 <form action="http://localhost:8080/attractions/add">
     <input type="submit" value="Add New Attraction">
 </form>

@@ -53,5 +53,4 @@ class TouristRepositoryTest {
         assertEquals("Tivoli", deletedAttraction.getName());
         assertNull(touristRepository.findAttractionById(attractionIdToDelete));
     }
-
 }

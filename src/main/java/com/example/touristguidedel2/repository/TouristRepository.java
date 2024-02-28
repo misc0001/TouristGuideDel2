@@ -54,7 +54,7 @@ public class TouristRepository {
     }
 
 
-    public void deleteAttraction(int id) {
+    public TouristAttraction deleteAttraction(int id) {
         TouristAttraction removeAttraction = null;
         for (TouristAttraction attraction : touristAttractions) {
             if (attraction.getId() == id)
@@ -62,6 +62,7 @@ public class TouristRepository {
         }
         if (removeAttraction != null)
             touristAttractions.remove(removeAttraction);
+        return removeAttraction;
     }
 
 
@@ -99,6 +100,7 @@ public class TouristRepository {
         else
             return null;
     }
+
 }
 
 

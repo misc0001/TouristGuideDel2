@@ -13,6 +13,7 @@ public class TouristService {
     public TouristService() {
         touristRepository = new TouristRepository();
     }
+
     public List<TouristAttraction> getAllAttractions() {
         return touristRepository.getAllAttractions();
     }

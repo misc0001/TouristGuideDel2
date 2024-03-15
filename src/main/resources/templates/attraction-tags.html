@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/main.css}">
+</head>
+<body>
+<h1>Tags for: <span th:text="${attraction.name}"></span></h1>
+<ul>
+    <li th:each="tag : ${attraction.tags}">
+        <span th:text="${tag}"></span>
+    </li>
+</ul>
+<form action="/attractions">
+    <input type="submit" value="Tilbage">
+</form>
+</body>
+</html>

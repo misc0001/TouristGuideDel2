@@ -4,6 +4,7 @@ import com.example.touristguidedel2.model.TouristAttraction;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Repository
@@ -15,10 +16,10 @@ public class TouristRepository {
     public TouristRepository() {
         touristAttractId = 1;
         touristAttractions = new ArrayList<>(List.of(
-                new TouristAttraction(getTouristAttractId(), "Amalienborg Slot", "Slot"),
-                new TouristAttraction(getTouristAttractId(), "Tivoli", "Forlystelsespark"),
-                new TouristAttraction(getTouristAttractId(), "Fredensborg Slot", "Slot"),
-                new TouristAttraction(getTouristAttractId(), "København Zoo", "Zoo")
+                new TouristAttraction(getTouristAttractId(), "Amalienborg Slot", "Slot", "København", List.of("amalienTags", "tags2")),
+                new TouristAttraction(getTouristAttractId(),"Tivoli", "Forlystelsespark", "København", List.of("tivoliTags", "tags2")),
+                new TouristAttraction(getTouristAttractId(), "Fredensborg Slot", "Slot", "København", List.of("fredenbordTags", "tags2")),
+                new TouristAttraction(getTouristAttractId(), "København Zoo", "Zoo", "København", List.of("zooTags", "tags2"))
         ));
 
     }
@@ -29,6 +30,13 @@ public class TouristRepository {
 
     public List<TouristAttraction> getAllAttractions() {
         return touristAttractions;
+    }
+
+    public List<String> getCities() {
+        return Arrays.asList("København", "Odense", "Aarhus");
+    }
+    public List<String> getTags() {
+        return Arrays.asList("Børnevenlig", "Gratis", "Kunst", "Museum", "Natur");
     }
 
     public void addAttraction(TouristAttraction touristAttraction) {
@@ -45,16 +53,20 @@ public class TouristRepository {
         }
     }
 
-    public void deleteAttraction(int id) {
-        TouristAttraction removeAttraction = null;
-        for (TouristAttraction touristAttraction : touristAttractions) {
-            if (touristAttraction.getId() == id)
-                removeAttraction = touristAttraction;
 
+    public TouristAttraction deleteAttraction(int id) {
+        TouristAttraction removeAttraction = null;
+        for (TouristAttraction attraction : touristAttractions) {
+            if (attraction.getId() == id)
+                removeAttraction = attraction;
         }
         if (removeAttraction != null)
             touristAttractions.remove(removeAttraction);
+        return removeAttraction;
     }
+
+
+  
 
     public TouristAttraction editAttraction(String name, TouristAttraction editAttraction) {
         for (TouristAttraction touristAttraction : touristAttractions) {
@@ -73,6 +85,20 @@ public class TouristRepository {
             }
         }
         return null;
+    }
+
+
+    public TouristAttraction findAttractionById(int id) {
+        TouristAttraction attractionFind = null;
+        for (TouristAttraction attraction : touristAttractions) {
+            if (attraction.getId() == id) {
+                attractionFind = attraction;
+            }
+        }
+        if (attractionFind != null)
+            return attractionFind;
+        else
+            return null;
     }
 
 }

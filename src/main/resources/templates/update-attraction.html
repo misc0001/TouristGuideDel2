@@ -1,43 +1,40 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Edit Attraction</title>
-    <!-- Link to your CSS file -->
-    <link th:href="@{/css/main.css}" rel="stylesheet" />
+    <link rel="stylesheet" th:href="@{/main.css}">
 </head>
 <body>
-<h2>Edit Tourist Attraction</h2>
-<form th:action="@{/attractions/update}" th:object="${attraction}" method="post">
-    <!-- The name field is not editable, hence the hidden field -->
-    <input type="hidden" th:field="*{attraction.name}" />
-
+<h2>Ændring af informationer</h2>
+<form action="/path-to-your-update-endpoint" method="post">
     <div>
-        <label for="description">Description:</label>
-        <textarea id="description" th:field="*{attraction.description}" required></textarea>
+        <label for="name">Navn:</label>
+        <input type="text" id="name" name="name" value="{name}" readonly>
     </div>
-
-    <!-- Assuming city is an editable field -->
     <div>
-        <label for="city">City:</label>
-        <input type="text" id="city" th:field="*{attraction.city}" required />
+        <label for="description">Beskrivelse:</label>
+        <input type="text" id="description" name="description" value="">
     </div>
-
-    <!-- Assuming tags is an editable field and it's a list of strings -->
     <div>
-        <label for="tags">Tags:</label>
-        <select id="tags" th:field="*{attraction.tags}" multiple>
-            <!-- Assuming you have a list of possible tags in your model -->
-            <option th:each="tag : ${allTags}" th:value="${tag}" th:text="${tag}"
-                    th:selected="${#lists.contains(attraction.tags, tag)}">
-            </option>
+        <label for="city">By:</label>
+        <select id="city" name="city">
+            <option value="kobenhavn" selected>København</option>
+            <!-- Add other cities as needed -->
         </select>
     </div>
-
     <div>
-        <input type="submit" value="Update" />
+        <label>Tags:</label>
+        <label><input type="checkbox" name="tags" value="børnevenlig"> Børnevenlig</label>
+        <label><input type="checkbox" name="tags" value="gratis"> Gratis</label>
+        <label><input type="checkbox" name="tags" value="kunst" > Kunst</label>
+        <label><input type="checkbox" name="tags" value="museum" > Museum</label>
+        <label><input type="checkbox" name="tags" value="natur"> Natur</label>
+    </div>
+    <div>
+        <input type="submit" value="Ok">
+        <button type="button" onclick="window.history.back();">Fortryd</button>
     </div>
 </form>
-<a href="/attractions">Back to list</a>
 </body>
 </html>

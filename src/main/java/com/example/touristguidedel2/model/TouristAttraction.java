@@ -46,7 +46,7 @@ public class TouristAttraction {
     }
 
     public String getCity() {
-        return city;
+        return city;    
     }
 
     public void setCity(String city) {

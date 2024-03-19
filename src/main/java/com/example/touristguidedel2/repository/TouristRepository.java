@@ -59,17 +59,21 @@ public class TouristRepository {
     }
 
 
-  
 
-    public TouristAttraction editAttraction(String name, TouristAttraction editAttraction) {
+
+    public boolean editAttraction(String name, TouristAttraction editAttraction) {
         for (TouristAttraction touristAttraction : touristAttractions) {
             if (touristAttraction.getName().equals(name)) {
                 touristAttraction.setDescription(editAttraction.getDescription());
-                return touristAttraction;
+                touristAttraction.setId(editAttraction.getId());
+                touristAttraction.setCity(editAttraction.getCity());
+                touristAttraction.setTags(editAttraction.getTags());
+                return true;  // Update successful
             }
         }
-        return null;
+        return false;  // Update unsuccessful, attraction not found
     }
+
 
     public TouristAttraction findByName(String name) {
         for (TouristAttraction attraction : touristAttractions) {

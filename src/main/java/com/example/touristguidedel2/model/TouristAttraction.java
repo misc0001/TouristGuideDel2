@@ -60,6 +60,10 @@ public class TouristAttraction {
     public void setTags(List<String> tags) {
         this.tags = tags;
     }
+    public String getTagsAsString() {
+        // Join the tags list into a single string with a delimiter (e.g., comma-separated)
+        return String.join(",", tags);
+    }
 
     @Override
     public boolean equals(Object o) {

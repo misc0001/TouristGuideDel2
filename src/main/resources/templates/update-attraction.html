@@ -17,11 +17,10 @@
         <input type="text" id="description" name="description" value="">
     </div>
     <div>
-        <label for="city">By:</label>
+        <label for="city">City:</label><br>
         <select id="city" name="city">
-            <option value="kobenhavn" selected>København</option>
-            <!-- Add other cities as needed -->
-        </select>
+            <option th:each="city : ${cities}" th:value="${city}" th:text="${city}"></option>
+        </select><br>
     </div>
     <div>
         <label>Tags:</label>

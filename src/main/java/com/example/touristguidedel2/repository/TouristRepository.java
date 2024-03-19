@@ -15,13 +15,6 @@ public class TouristRepository {
 
     public TouristRepository() {
         touristAttractId = 1;
-        touristAttractions = new ArrayList<>(List.of(
-                new TouristAttraction(getTouristAttractId(), "Amalienborg Slot", "Slot", "København", List.of("amalienTags", "tags2")),
-                new TouristAttraction(getTouristAttractId(),"Tivoli", "Forlystelsespark", "København", List.of("tivoliTags", "tags2")),
-                new TouristAttraction(getTouristAttractId(), "Fredensborg Slot", "Slot", "København", List.of("fredenbordTags", "tags2")),
-                new TouristAttraction(getTouristAttractId(), "København Zoo", "Zoo", "København", List.of("zooTags", "tags2"))
-        ));
-
     }
 
     private int getTouristAttractId() {

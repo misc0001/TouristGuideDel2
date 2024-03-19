@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Select an Attraction</title>
+</head>
+<body>
+<h1>Select an Attraction to Edit</h1>
+<form action="/attractions/edit" method="get">
+    <select name="name" onchange="this.form.submit()">
+        <option value="">Choose an Attraction</option>
+        <option th:each="attraction : ${attractions}"
+                th:value="${attraction.name}"
+                th:text="${attraction.name}">Attraction</option>
+    </select>
+</form>
+</body>
+</html>

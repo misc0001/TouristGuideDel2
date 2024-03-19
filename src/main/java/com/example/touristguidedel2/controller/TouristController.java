@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 import java.util.List;
@@ -31,10 +32,20 @@ public class TouristController {
         return "attraction-index";
     }
 
+    @GetMapping("/select")
+    public String selectAttraction(Model model) {
+        List<TouristAttraction> attractions = touristService.getAllAttractions();
+        model.addAttribute("attractions", attractions);
+        return "select-attraction";
+    }
 
-    @GetMapping("/edit/name")
+    @GetMapping("/edit")
     public String editAttractions(@RequestParam String name, Model model) {
         TouristAttraction attraction = touristService.findByName(name);
+        List<String> cities = touristService.getCities();
+        List<String> tags = touristService.getTags();
+        model.addAttribute("cities", cities);
+        model.addAttribute("tags", tags);
         if (attraction != null) {
             model.addAttribute("attraction", attraction);
             return "attraction-edit";
@@ -42,12 +53,13 @@ public class TouristController {
             return "attraction-not-found";
         }
     }
-    @PostMapping("/update/name")
-    public String updateAttraction(@ModelAttribute TouristAttraction attraction, Model model) {
-        touristService.editAttraction(attraction.getName(), attraction);
-        model.addAttribute("attraction", attraction);
-        return "attraction-edit";
+    @PostMapping("/edit")
+    public String updateAttraction(@ModelAttribute TouristAttraction attraction, RedirectAttributes redirectAttributes) {
+        touristService.updateAttraction(attraction);
+        redirectAttributes.addFlashAttribute("successMessage", "Attraction updated successfully!");
+        return "redirect:/attractions";
     }
+
 
 
     @GetMapping("{id}/delete")

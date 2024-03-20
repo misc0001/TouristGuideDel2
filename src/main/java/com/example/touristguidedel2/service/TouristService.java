@@ -20,6 +20,7 @@ public class TouristService {
     }
 
     public List<TouristAttraction> getAllAttractions() {
+        //return touristRepository_db.getTouristAttractions();
         return touristRepository_db.getTouristAttractions();
     }
     public List<String> getCities() {
@@ -33,10 +34,10 @@ public class TouristService {
     }
 
     public void editAttraction(String name, TouristAttraction updatedAttraction) {
-        touristRepository_db.editAttraction(name, updatedAttraction);
+        touristRepository.editAttraction(name, updatedAttraction);
     }
     public void updateAttraction(TouristAttraction touristAttraction){
-        touristRepository_db.updateAttraction(touristAttraction);
+        touristRepository.updateAttraction(touristAttraction);
     }
 
     public TouristAttraction findByName(String name) {
